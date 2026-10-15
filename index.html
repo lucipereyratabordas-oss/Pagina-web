@@ -1,0 +1,2599 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basurales a Cielo Abierto - Proyecto Expo 2026 | B° Urbano 3 La Rioja</title>
+  <meta name="description" content="Proyecto de investigación escolar Expo 2026 sobre el impacto socioambiental de los basurales a cielo abierto en el B° Urbano 3 de La Rioja y propuesta de reconversión sustentable vía Alianza Público-Privada." />
+  <meta property="og:title" content="Basurales a Cielo Abierto - Proyecto Expo 2026" />
+  <meta property="og:description" content="Impacto Ambiental y Calidad de Vida en la Comunidad. Propuesta de reconversión urbana sustentable para La Rioja." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js CDN para gráficos interactivos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --primary: #15803d;
+      --primary-dark: #166534;
+      --primary-light: #86efac;
+      --primary-subtle: #f0fdf4;
+      --accent-emerald: #059669;
+      --accent-lime: #65a30d;
+      --accent-amber: #d97706;
+      --accent-sky: #0284c7;
+      --dark: #0f172a;
+      --gray-900: #1e293b;
+      --gray-700: #334155;
+      --gray-600: #475569;
+      --gray-400: #94a3b8;
+      --gray-200: #e2e8f0;
+      --gray-100: #f1f5f9;
+      --gray-50: #f8fafc;
+      --white: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--gray-900);
+      background-color: var(--gray-50);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    /* Sticky Navbar */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--gray-900);
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #15803d, #059669);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 10px rgba(21, 128, 61, 0.3);
+    }
+
+    .logo-text h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .logo-text span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.925rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      padding: 0.4rem 0.2rem;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--primary), var(--accent-emerald));
+      color: white !important;
+      padding: 0.55rem 1.25rem !important;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(21, 128, 61, 0.35);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--gray-700);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      background: radial-gradient(circle at 10% 20%, rgba(240, 253, 244, 0.95) 0%, rgba(248, 250, 252, 1) 90%);
+      padding: 4.5rem 0 4rem 0;
+      border-bottom: 1px solid var(--gray-200);
+      overflow: hidden;
+    }
+
+    .hero-deco-1 {
+      position: absolute;
+      top: -100px;
+      right: -80px;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(134, 239, 172, 0.25) 0%, rgba(134, 239, 172, 0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-deco-2 {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(5, 150, 105, 0.15) 0%, rgba(5, 150, 105, 0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge-expo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background-color: var(--primary-subtle);
+      border: 1px solid #bbf7d0;
+      color: var(--primary-dark);
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: 2.85rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .hero-title .highlight {
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 4px;
+      width: 100%;
+      height: 8px;
+      background: rgba(134, 239, 172, 0.45);
+      z-index: -1;
+      border-radius: 4px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--gray-600);
+      margin-bottom: 2rem;
+      max-width: 620px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent-emerald));
+      color: white;
+      box-shadow: 0 4px 14px rgba(21, 128, 61, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(21, 128, 61, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--gray-100);
+      color: var(--gray-900);
+      transform: translateY(-2px);
+    }
+
+    /* Card Identificación Académica */
+    .academic-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+
+    .academic-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #15803d, #10b981, #84cc16);
+      border-top-left-radius: var(--radius-lg);
+      border-top-right-radius: var(--radius-lg);
+    }
+
+    .academic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .academic-header h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tag-year {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .meta-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .authors-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem;
+    }
+
+    .author-item {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .author-item::before {
+      content: '•';
+      color: var(--accent-emerald);
+      font-weight: bold;
+    }
+
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .tag-subject {
+      background: var(--gray-100);
+      color: var(--gray-700);
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 500;
+      border: 1px solid var(--gray-200);
+    }
+
+    .teachers-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+
+    .teacher-badge {
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      background: var(--primary-subtle);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid #bbf7d0;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-description {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+    }
+
+    /* Diagnóstico y Contexto */
+    .context-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .geo-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f1f5f9;
+      color: #334155;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+
+    .context-desc {
+      font-size: 1.025rem;
+      color: var(--gray-700);
+      margin-bottom: 1.25rem;
+    }
+
+    .context-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .metric-card {
+      background: var(--gray-50);
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      border: 1px solid var(--gray-200);
+    }
+
+    .metric-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      display: block;
+    }
+
+    .metric-sub {
+      font-size: 0.75rem;
+      color: var(--gray-600);
+      font-weight: 600;
+    }
+
+    /* Tarjetas de Problemática */
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .problem-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #cbd5e1;
+    }
+
+    .problem-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .problem-icon.red { background: #fee2e2; color: #dc2626; }
+    .problem-icon.amber { background: #fef3c7; color: #d97706; }
+    .problem-icon.purple { background: #f3e8ff; color: #9333ea; }
+    .problem-icon.emerald { background: #dcfce7; color: #16a34a; }
+
+    .problem-card h4 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.55;
+    }
+
+    /* Hipótesis Callout */
+    .hypothesis-card {
+      background: linear-gradient(135deg, #064e3b, #15803d);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 2.25rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .hypothesis-card::after {
+      content: '"';
+      position: absolute;
+      right: 25px;
+      bottom: -35px;
+      font-size: 11rem;
+      line-height: 1;
+      font-family: serif;
+      color: rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+
+    .hypothesis-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hypothesis-text {
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1.5;
+      max-width: 950px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Metodología con Pestañas (Tabs) */
+    .tabs-container {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .tabs-nav {
+      display: flex;
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0.5rem 0.5rem 0 0.5rem;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem 1.25rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gray-600);
+      background: transparent;
+      border: none;
+      border-top-left-radius: var(--radius-md);
+      border-top-right-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--gray-900);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .tab-btn.active {
+      color: var(--primary-dark);
+      background: white;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: white;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 2.5rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Encuestas Progress Bars */
+    .survey-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .survey-item {
+      margin-bottom: 1.4rem;
+    }
+
+    .survey-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .progress-bar-bg {
+      height: 10px;
+      background: var(--gray-200);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent-emerald));
+      border-radius: var(--radius-full);
+      transition: width 1s ease-in-out;
+    }
+
+    /* Quotes Entrevistas */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .quote-card {
+      background: var(--gray-50);
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      border-top: 1px solid var(--gray-200);
+      border-right: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .quote-card p {
+      font-style: italic;
+      color: var(--gray-700);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.55;
+    }
+
+    .quote-author {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Ficha Observación */
+    .fieldwork-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .fieldwork-table th, .fieldwork-table td {
+      padding: 0.9rem 1.1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .fieldwork-table th {
+      background: var(--gray-100);
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .fieldwork-table tr:hover {
+      background-color: var(--gray-50);
+    }
+
+    /* Propuesta de Inversión y APP */
+    .proposal-hero {
+      background: linear-gradient(135deg, #f8fafc, #f0fdf4);
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin-bottom: 3.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .proposal-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #dcfce7;
+      color: #166534;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .proposal-hero h3 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .proposal-hero p {
+      font-size: 1rem;
+      color: var(--gray-600);
+      margin-bottom: 1.5rem;
+    }
+
+    .app-pillars {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .app-pillar-item {
+      background: white;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-200);
+    }
+
+    .app-pillar-item strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .app-pillar-item span {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+    }
+
+    /* Gráfico y Distribución */
+    .chart-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      background: white;
+      padding: 2.5rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 3.5rem;
+    }
+
+    .chart-container-box {
+      position: relative;
+      height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chart-legend-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .legend-item-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-md);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      transition: all 0.2s ease;
+    }
+
+    .legend-item-card:hover {
+      background: white;
+      border-color: var(--primary-light);
+      transform: translateX(4px);
+    }
+
+    .legend-left {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .legend-color-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .legend-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .legend-desc {
+      font-size: 0.78rem;
+      color: var(--gray-600);
+    }
+
+    .legend-pct {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    /* Simulador Técnico-Económico */
+    .simulator-panel {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .sim-header {
+      margin-bottom: 1.75rem;
+      text-align: center;
+    }
+
+    .sim-header h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .sim-header p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+    }
+
+    .sim-button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .sim-btn {
+      padding: 1rem;
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      background: var(--gray-50);
+      color: var(--gray-700);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.25s ease;
+    }
+
+    .sim-btn:hover {
+      border-color: #94a3b8;
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    .sim-btn.active {
+      border-color: var(--primary);
+      background: var(--primary-subtle);
+      color: var(--primary-dark);
+      box-shadow: 0 4px 12px rgba(21, 128, 61, 0.15);
+    }
+
+    .sim-btn-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sim-card-detail {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s ease;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .sim-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      width: fit-content;
+      margin-bottom: 0.85rem;
+    }
+
+    .sim-card-detail h4 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .sim-card-detail p {
+      font-size: 1rem;
+      color: var(--gray-700);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .sim-specs-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .sim-spec-pill {
+      font-size: 0.82rem;
+      background: white;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--gray-200);
+      color: var(--gray-600);
+      font-weight: 600;
+    }
+
+    /* Módulo Concientización y 3R */
+    .awareness-section {
+      background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%);
+      border-top: 1px solid #bbf7d0;
+      border-bottom: 1px solid #bbf7d0;
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .awareness-manifesto {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      border: 1px solid #86efac;
+      box-shadow: var(--shadow-xl);
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 4rem auto;
+      position: relative;
+    }
+
+    .awareness-manifesto h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #064e3b;
+      margin-bottom: 1rem;
+    }
+
+    .awareness-manifesto p {
+      font-size: 1.15rem;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+
+    /* 3R Interactive Grid */
+    .three-r-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-bottom: 4rem;
+    }
+
+    .r-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .r-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .r-card-header {
+      padding: 1.75rem 1.5rem 1rem 1.5rem;
+      text-align: center;
+    }
+
+    .r-card.r-reduce .r-card-header { background: #ecfdf5; }
+    .r-card.r-reuse .r-card-header { background: #f0f9ff; }
+    .r-card.r-recycle .r-card-header { background: #fefce8; }
+
+    .r-badge-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin: 0 auto 0.85rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: white;
+    }
+
+    .r-reduce .r-badge-number { background: #059669; }
+    .r-reuse .r-badge-number { background: #0284c7; }
+    .r-recycle .r-badge-number { background: #ca8a04; }
+
+    .r-card-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .r-card-subtitle {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .r-reduce .r-card-subtitle { color: #059669; }
+    .r-reuse .r-card-subtitle { color: #0284c7; }
+    .r-recycle .r-card-subtitle { color: #ca8a04; }
+
+    .r-card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .r-action-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .r-action-item {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.45;
+    }
+
+    .r-action-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .r-expandable-btn {
+      width: 100%;
+      background: var(--gray-50);
+      border: none;
+      border-top: 1px solid var(--gray-200);
+      padding: 0.85rem 1rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--gray-700);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: background 0.2s ease;
+    }
+
+    .r-expandable-btn:hover {
+      background: var(--gray-100);
+      color: var(--dark);
+    }
+
+    .r-extra-details {
+      display: none;
+      padding: 1rem 1.5rem 1.5rem 1.5rem;
+      background: var(--gray-50);
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      border-top: 1px dashed var(--gray-200);
+    }
+
+    .r-extra-details.open {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* Calculadora de Impacto de Residuos */
+    .calculator-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid #86efac;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .calc-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .calc-subtitle {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      margin-bottom: 2rem;
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .slider-container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--gray-800);
+    }
+
+    .slider-range {
+      width: 100%;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: #cbd5e1;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .slider-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    .calc-results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      text-align: center;
+    }
+
+    .calc-result-box {
+      background: var(--gray-50);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-200);
+    }
+
+    .calc-result-box.highlight {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+    }
+
+    .calc-res-num {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--dark);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .calc-result-box.highlight .calc-res-num {
+      color: var(--primary-dark);
+    }
+
+    .calc-res-label {
+      font-size: 0.78rem;
+      color: var(--gray-600);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: #94a3b8;
+      padding: 4.5rem 0 2.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #334155;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .footer-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+    }
+
+    .back-to-top {
+      color: var(--primary-light);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .back-to-top:hover {
+      color: white;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .context-box {
+        grid-template-columns: 1fr;
+      }
+      .proposal-hero {
+        grid-template-columns: 1fr;
+      }
+      .chart-layout {
+        grid-template-columns: 1fr;
+      }
+      .three-r-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-lg);
+        border-bottom: 1px solid var(--gray-200);
+        gap: 1rem;
+      }
+
+      .nav-links.mobile-open {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.15rem;
+      }
+
+      .section-title {
+        font-size: 1.85rem;
+      }
+
+      .survey-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .calc-results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .authors-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav-wrapper">
+        <a href="#inicio" class="logo-container">
+          <div class="logo-badge">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12a10 10 0 0 1 10-10z"/>
+              <path d="M7 13.5c1.5-2 3.5-3 5-3s3.5 1 5 3"/>
+              <path d="M12 10.5V17"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <h1>Expo 2026</h1>
+            <span>Basurales a Cielo Abierto</span>
+          </div>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+          <li><a href="#diagnostico" class="nav-link">Diagnóstico</a></li>
+          <li><a href="#metodologia" class="nav-link">Metodología</a></li>
+          <li><a href="#propuesta" class="nav-link">Propuesta</a></li>
+          <li><a href="#concientizacion" class="nav-link nav-cta">Concientización</a></li>
+        </ul>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú de navegación">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section & Identificación -->
+  <section class="hero-section" id="inicio">
+    <div class="hero-deco-1"></div>
+    <div class="hero-deco-2"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="badge-expo">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+            Presentación de Proyecto Escolar • Expo 2026
+          </div>
+          <h1 class="hero-title">
+            Basurales a <span class="highlight">Cielo Abierto</span>
+          </h1>
+          <p class="hero-subtitle">
+            Impacto ambiental y calidad de vida en la comunidad del barrio Urbano 3 (La Rioja) y propuesta de reconversión sustentable mediante Alianza Público-Privada.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#diagnostico" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              Explorar Diagnóstico
+            </a>
+            <a href="#propuesta" class="btn btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+              Ver Propuesta APP
+            </a>
+            <a href="#concientizacion" class="btn btn-secondary" style="border-color: #86efac; background: #f0fdf4; color: #166534;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Estrategia 3R
+            </a>
+          </div>
+
+          <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--gray-700); font-weight: 600;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #15803d;"></span>
+              Predio: 0.7 a 1 ha
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--gray-700); font-weight: 600;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #0284c7;"></span>
+              Zona Sur - La Rioja
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--gray-700); font-weight: 600;">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: #d97706;"></span>
+              Enfoque Mixto
+            </div>
+          </div>
+        </div>
+
+        <!-- Ficha de Identificación -->
+        <div class="academic-card">
+          <div class="academic-header">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              Ficha del Proyecto
+            </h3>
+            <span class="tag-year">5to Año Agro A</span>
+          </div>
+
+          <div class="meta-group">
+            <div class="meta-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Autoras Investigadoras
+            </div>
+            <div class="authors-list">
+              <span class="author-item">Torralba Victoria Micaela</span>
+              <span class="author-item">Pereyra Taborda Lucia</span>
+              <span class="author-item">Aguirre Ferreyra Constanza</span>
+              <span class="author-item">Rearte Cristal</span>
+            </div>
+          </div>
+
+          <div class="meta-group">
+            <div class="meta-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>
+              Materias Articuladas
+            </div>
+            <div class="tags-cloud">
+              <span class="tag-subject">CTS</span>
+              <span class="tag-subject">Espacio Opcional</span>
+              <span class="tag-subject">Tecnología Práctica</span>
+              <span class="tag-subject">Economía</span>
+              <span class="tag-subject">Filosofía</span>
+            </div>
+          </div>
+
+          <div class="meta-group" style="margin-bottom: 0;">
+            <div class="meta-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Docentes Orientadores
+            </div>
+            <div class="teachers-row">
+              <span class="teacher-badge">Prof. Montoya Joel</span>
+              <span class="teacher-badge">Prof. Antonio Abdala</span>
+              <span class="teacher-badge">Prof. Nieto Victor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diagnóstico y Contexto -->
+  <section class="section" id="diagnostico">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Punto de Partida</span>
+        <h2 class="section-title">Diagnóstico y Contextualización</h2>
+        <p class="section-description">
+          Relevamiento in situ del basural localizado en el periurbano sur de la capital riojana y su impacto directo sobre el ecosistema y la salud poblacional.
+        </p>
+      </div>
+
+      <div class="context-box">
+        <div>
+          <span class="geo-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Delimitación Espacial y Temporal (Año 2026)
+          </span>
+          <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--dark);">
+            Zona Sur de La Rioja • B° Urbano 3
+          </h3>
+          <p class="context-desc">
+            El área intervenida abarca un predio degradado de <strong>entre 0.7 y 1 hectárea</strong> contiguo a los barrios populares del sector sur. La falta de barreras de contención y de un circuito regular de recolección favoreció la consolidación de un vertedero clandestino a escasos metros de viviendas habitadas.
+          </p>
+          <div style="font-size: 0.88rem; color: var(--gray-600); line-height: 1.5;">
+            • <strong>Vulnerabilidad comunitaria:</strong> Alta exposición infantil a humos densos.<br>
+            • <strong>Suelo afectado:</strong> Sedimentos áridos con infiltración de lixiviados corrosivos.
+          </div>
+        </div>
+
+        <div class="context-metrics">
+          <div class="metric-card">
+            <span class="metric-val">1 ha</span>
+            <span class="metric-sub">Superficie máxima afectada</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">2 - 10m</span>
+            <span class="metric-sub">Profundidad del estrato residual</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">+800</span>
+            <span class="metric-sub">Vecinos expuestos en radio crítico</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjetas de problemáticas -->
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-icon red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          </div>
+          <h4>Quema Clandestina de Basura</h4>
+          <p>
+            Emisión constante de humo negro cargado de monóxido de carbono, dioxinas y furanos. Genera cuadros bronquiales, asma y picazón ocular persistente en niños y adultos mayores.
+          </p>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-icon amber">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          <h4>Contaminación de Suelo y Napas</h4>
+          <p>
+            Generación de lixiviados ácidos por degradación anaeróbica sin contención física. El agua de lluvia drena metales pesados e hidrocarburos directo a los acuíferos subterráneos de la zona.
+          </p>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-icon purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/><path d="M4 4h16v16H4z"/></svg>
+          </div>
+          <h4>Vectores e Infecciones</h4>
+          <p>
+            Proliferación descontrolada de moscas, mosquitos vectores de arbovirus (dengue), roedores e insectos rastreros que ingresan directamente a los domicilios colindantes.
+          </p>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-icon emerald">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+          </div>
+          <h4>Malos Olores y Desvalorización</h4>
+          <p>
+            Gases sulfhídricos y compuestos orgánicos volátiles deterioran el entorno habitable, impiden ventilar hogares y devalúan el patrimonio urbano de los residentes riojanos.
+          </p>
+        </div>
+      </div>
+
+      <!-- Hipótesis Destacada -->
+      <div class="hypothesis-card">
+        <div class="hypothesis-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 14h-2v-2h2Zm0-4h-2V7h2Z"/></svg>
+          Hipótesis Central de Investigación
+        </div>
+        <p class="hypothesis-text">
+          "La presencia de basurales a cielo abierto afecta negativamente al ambiente y a la calidad de vida de los habitantes cercanos, debido a la acumulación de residuos y a la falta de una gestión adecuada de los mismos."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metodología (Enfoque Mixto) -->
+  <section class="section" id="metodologia" style="background: #ffffff; border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Rigor Científico</span>
+        <h2 class="section-title">Metodología de Investigación (Enfoque Mixto)</h2>
+        <p class="section-description">
+          Triangulación de instrumentos cuantitativos y cualitativos para respaldar con evidencia empírica el diagnóstico barrial.
+        </p>
+      </div>
+
+      <!-- Tabs Component -->
+      <div class="tabs-container">
+        <div class="tabs-nav" role="tablist">
+          <button class="tab-btn active" id="tab-btn-encuestas" onclick="switchTab('encuestas')" role="tab">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            1. Encuestas (Cuantitativo)
+          </button>
+          <button class="tab-btn" id="tab-btn-entrevistas" onclick="switchTab('entrevistas')" role="tab">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            2. Entrevistas (Cualitativo)
+          </button>
+          <button class="tab-btn" id="tab-btn-observacion" onclick="switchTab('observacion')" role="tab">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            3. Observación Directa
+          </button>
+        </div>
+
+        <!-- Contenido Tab 1: Encuestas -->
+        <div class="tab-content active" id="tab-encuestas" role="tabpanel">
+          <div class="survey-stats">
+            <div>
+              <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 0.75rem;">
+                Percepción Barrial del Impacto Ambiental
+              </h3>
+              <p style="font-size: 0.95rem; color: var(--gray-600); margin-bottom: 1.5rem;">
+                Muestreo representativo sobre familias del barrio Urbano 3 y zonas adyacentes. Los resultados confirman una afectación crítica generalizada:
+              </p>
+
+              <div class="survey-item">
+                <div class="survey-label">
+                  <span>Percibe malos olores frecuentes o permanentes</span>
+                  <strong style="color: var(--primary);">94%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 94%;"></div>
+                </div>
+              </div>
+
+              <div class="survey-item">
+                <div class="survey-label">
+                  <span>Afectación directa por humo de quemas nocturnas</span>
+                  <strong style="color: var(--primary);">88%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 88%;"></div>
+                </div>
+              </div>
+
+              <div class="survey-item">
+                <div class="survey-label">
+                  <span>Presencia de roedores e insectos en el hogar</span>
+                  <strong style="color: var(--primary);">91%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 91%;"></div>
+                </div>
+              </div>
+
+              <div class="survey-item">
+                <div class="survey-label">
+                  <span>Exige remediación urbana y reconversión sustentable</span>
+                  <strong style="color: var(--primary);">98%</strong>
+                </div>
+                <div class="progress-bar-bg">
+                  <div class="progress-bar-fill" style="width: 98%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 1.75rem;">
+              <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Hallazgos Cuantitativos Clave
+              </h4>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.9rem; color: var(--gray-700);">
+                <li style="display: flex; gap: 0.5rem;">
+                  <span style="color: var(--primary); font-weight: bold;">✓</span>
+                  El 76% de los encuestados reportó haber sufrido episodios de alergias o broncoespasmos vinculados a las quemas de basura.
+                </li>
+                <li style="display: flex; gap: 0.5rem;">
+                  <span style="color: var(--primary); font-weight: bold;">✓</span>
+                  La desconfianza en la limpieza municipal es del 82%, demandando soluciones de fondo como paseos verdes autosustentables.
+                </li>
+                <li style="display: flex; gap: 0.5rem;">
+                  <span style="color: var(--primary); font-weight: bold;">✓</span>
+                  Alta predisposición (89%) para colaborar en esquemas comunitarios de separación en origen si existe infraestructura cercana.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido Tab 2: Entrevistas -->
+        <div class="tab-content" id="tab-entrevistas" role="tabpanel">
+          <div style="margin-bottom: 2rem;">
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem;">
+              Voces de la Comunidad • Relatos y Testimonios Cualitativos
+            </h3>
+            <p style="font-size: 0.95rem; color: var(--gray-600);">
+              Entrevistas en profundidad realizadas a vecinos residentes para comprender la dimensión vivencial y subjetiva de habitar al lado del vertedero.
+            </p>
+          </div>
+
+          <div class="quotes-grid">
+            <div class="quote-card">
+              <p>
+                "Hay noches donde el humo se mete adentro de las piezas aunque cerremos todo. Mis dos hijos más chicos toman corticoides porque amanecen con silbidos en el pecho. No podemos seguir viviendo así."
+              </p>
+              <div class="quote-author">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.2"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/></svg>
+                Marta S. • Residente a 120m del predio (14 años en el barrio)
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <p>
+                "La gente viene en camionetas y carros de noche a tirar escombros y basura muerta. Nadie cuida. Si hacen un paseo con negocios y luces, el basural no vuelve más porque habrá movimiento y vida."
+              </p>
+              <div class="quote-author">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.2"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/></svg>
+                Jorge G. • Comerciante del B° Urbano 3
+              </div>
+            </div>
+
+            <div class="quote-card">
+              <p>
+                "En verano las moscas no te dejan ni comer. Uno limpia su patio, pero al tener la montaña de residuos enfrente es una batalla perdida. Un pulmón verde transformaría completamente nuestro barrio."
+              </p>
+              <div class="quote-author">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.2"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/></svg>
+                Claudia R. • Vecina y docente barrial
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido Tab 3: Observación Directa -->
+        <div class="tab-content" id="tab-observacion" role="tabpanel">
+          <div style="margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 0.5rem;">
+              Ficha Técnica de Relevamiento de Campo
+            </h3>
+            <p style="font-size: 0.95rem; color: var(--gray-600);">
+              Registro sistematizado de las características físicas, biofísicas y topográficas del terreno intervenido.
+            </p>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="fieldwork-table">
+              <thead>
+                <tr>
+                  <th>Variable Analizada</th>
+                  <th>Estado Observado en Terreno</th>
+                  <th>Nivel de Riesgo</th>
+                  <th>Impacto Geotécnico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Espesor de Residuos</strong></td>
+                  <td>Estratificación caótica de 2 a 10 metros de profundidad</td>
+                  <td><span style="background: #fee2e2; color: #b91c1c; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">CRÍTICO</span></td>
+                  <td>Inestabilidad severa de suelo; asentamientos diferenciales</td>
+                </tr>
+                <tr>
+                  <td><strong>Tipología de Residuos</strong></td>
+                  <td>Plásticos PET/PEAD, bolsas, restos orgánicos, escombros pesados, gomas de caucho</td>
+                  <td><span style="background: #fee2e2; color: #b91c1c; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">ALTO</span></td>
+                  <td>Generación de gases (CH4) y focos ígneos espontáneos</td>
+                </tr>
+                <tr>
+                  <td><strong>Barreras Perimetrales</strong></td>
+                  <td>Inexistentes. Acceso libre sin delimitación de seguridad ni vigilancia</td>
+                  <td><span style="background: #fef3c7; color: #b45309; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">MODERADO</span></td>
+                  <td>Volcado clandestino continuado de cargas foráneas</td>
+                </tr>
+                <tr>
+                  <td><strong>Drenaje y Escurrimiento</strong></td>
+                  <td>Cuencas ciegas sin canalización pluvial; encharcamiento tóxico</td>
+                  <td><span style="background: #fee2e2; color: #b91c1c; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">CRÍTICO</span></td>
+                  <td>Filtración acelerada de lixiviados al estrato freático</td>
+                </tr>
+                <tr>
+                  <td><strong>Vegetación Existente</strong></td>
+                  <td>Malezas ruderales resistentes; degradación de flora nativa</td>
+                  <td><span style="background: #f1f5f9; color: #475569; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.75rem;">LEVE</span></td>
+                  <td>Potencial de recuperación con especies autóctonas xerófilas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Propuesta de Inversión (Reconversión Sustentable) -->
+  <section class="section" id="propuesta">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Solución Integral</span>
+        <h2 class="section-title">Propuesta de Inversión y Reconversión</h2>
+        <p class="section-description">
+          Transformación del predio mediante un modelo de Alianza Público-Privada (APP) en un "Paseo Urbano Comercial" sustentable.
+        </p>
+      </div>
+
+      <!-- Banner de la Propuesta -->
+      <div class="proposal-hero">
+        <div>
+          <span class="proposal-tag">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Modelo Económico: Alianza Público-Privada (APP)
+          </span>
+          <h3>Paseo Urbano Comercial La Rioja Sur</h3>
+          <p>
+            Reconversión de un pasivo ambiental de <strong>0.7 a 1 hectárea</strong> en un polo dinamizador barrial. El Estado aporta beneficios fiscales, respaldo financiero y concesión parcial de suelo seguro, mientras que el sector privado asume el saneamiento técnico de vanguardia y la operación comercial.
+          </p>
+
+          <div class="app-pillars">
+            <div class="app-pillar-item">
+              <strong>El Estado Provincial / Municipal</strong>
+              <span>Garantiza exención impositiva por 10 años, créditos Banco Rioja y seguridad jurídica.</span>
+            </div>
+            <div class="app-pillar-item">
+              <strong>El Sector Privado Inversor</strong>
+              <span>Instala geomembranas, pozos de venteo de biogás, locales comerciales y parquizado público.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: white; border-radius: var(--radius-md); padding: 1.75rem; border: 1px solid var(--gray-200); box-shadow: var(--shadow-md);">
+          <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2.2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Restricción Geotécnica Primordial
+          </h4>
+          <p style="font-size: 0.88rem; color: var(--gray-600); margin-bottom: 1rem; line-height: 1.55;">
+            El subsuelo contiene residuos enterrados de <strong>2 a 10 metros</strong> de espesor. Esto genera asentamientos plásticos impredecibles y excluye taxativamente construcciones pesadas en altura o barrios residenciales.
+          </p>
+          <div style="background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 0.75rem; font-size: 0.82rem; color: #92400e; font-weight: 600;">
+            Solución técnica: Cimentaciones livianas (plateas y micropilotes) y destino prioritario a áreas verdes parquizadas y paseos a cielo abierto.
+          </div>
+        </div>
+      </div>
+
+      <!-- Gráfico de Torta: Distribución del Espacio -->
+      <div class="chart-layout">
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.35rem;">
+            Distribución Territorial Óptima
+          </span>
+          <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--dark); margin-bottom: 0.75rem;">
+            Zonificación del Paseo Urbano
+          </h3>
+          <p style="font-size: 0.95rem; color: var(--gray-600); margin-bottom: 1.5rem;">
+            Diseñado en base a estrictos parámetros geotécnicos para garantizar equilibrio entre rentabilidad económica y sustentabilidad ecológica.
+          </p>
+
+          <div class="chart-legend-list">
+            <div class="legend-item-card">
+              <div class="legend-left">
+                <div class="legend-color-dot" style="background-color: #059669;"></div>
+                <div>
+                  <div class="legend-title">Área Rentable (Privada)</div>
+                  <div class="legend-desc">Comercios livianos, gastronomía sustentable, feria comunitaria</div>
+                </div>
+              </div>
+              <div class="legend-pct" style="color: #059669;">48%</div>
+            </div>
+
+            <div class="legend-item-card">
+              <div class="legend-left">
+                <div class="legend-color-dot" style="background-color: #10b981;"></div>
+                <div>
+                  <div class="legend-title">Pulmón Verde</div>
+                  <div class="legend-desc">Parque botánico con flora autóctona (algarrobo, chañar, jarilla)</div>
+                </div>
+              </div>
+              <div class="legend-pct" style="color: #10b981;">30%</div>
+            </div>
+
+            <div class="legend-item-card">
+              <div class="legend-left">
+                <div class="legend-color-dot" style="background-color: #38bdf8;"></div>
+                <div>
+                  <div class="legend-title">Circulación Peatonal</div>
+                  <div class="legend-desc">Senderos accesibles, bicisendas y rampas de bajo impacto</div>
+                </div>
+              </div>
+              <div class="legend-pct" style="color: #0284c7;">17%</div>
+            </div>
+
+            <div class="legend-item-card">
+              <div class="legend-left">
+                <div class="legend-color-dot" style="background-color: #64748b;"></div>
+                <div>
+                  <div class="legend-title">Estacionamiento Ecológico</div>
+                  <div class="legend-desc">Adoquines intertrabados drenantes sin asfalto impermeable</div>
+                </div>
+              </div>
+              <div class="legend-pct" style="color: #475569;">5%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-container-box">
+          <canvas id="spaceDistributionChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Simulador Técnico-Económico -->
+      <div class="simulator-panel">
+        <div class="sim-header">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.35rem;">
+            Herramienta Interactiva
+          </span>
+          <h3>Simulador Técnico-Económico de la APP</h3>
+          <p>Haz clic en cada componente clave para explorar las condiciones de inversión, mitigación y normativa técnica.</p>
+        </div>
+
+        <div class="sim-button-grid">
+          <button class="sim-btn active" onclick="activateSimItem('geotecnica', this)">
+            <div class="sim-btn-icon">🏗️</div>
+            <div>
+              <div>Restricción Geotécnica</div>
+              <span style="font-size: 0.72rem; color: var(--gray-600); font-weight: 500;">2 a 10m de residuos</span>
+            </div>
+          </button>
+
+          <button class="sim-btn" onclick="activateSimItem('impuestos', this)">
+            <div class="sim-btn-icon">📜</div>
+            <div>
+              <div>Exención Impositiva</div>
+              <span style="font-size: 0.72rem; color: var(--gray-600); font-weight: 500;">10 años provinciales</span>
+            </div>
+          </button>
+
+          <button class="sim-btn" onclick="activateSimItem('banco', this)">
+            <div class="sim-btn-icon">🏦</div>
+            <div>
+              <div>Créditos Banco Rioja</div>
+              <span style="font-size: 0.72rem; color: var(--gray-600); font-weight: 500;">Tasa subsidiada</span>
+            </div>
+          </button>
+
+          <button class="sim-btn" onclick="activateSimItem('suelo', this)">
+            <div class="sim-btn-icon">📐</div>
+            <div>
+              <div>Concesión 55% Suelo</div>
+              <span style="font-size: 0.72rem; color: var(--gray-600); font-weight: 500;">Explotación comercial</span>
+            </div>
+          </button>
+
+          <button class="sim-btn" onclick="activateSimItem('saneamiento', this)">
+            <div class="sim-btn-icon">🛡️</div>
+            <div>
+              <div>Saneamiento Físico</div>
+              <span style="font-size: 0.72rem; color: var(--gray-600); font-weight: 500;">Geomembranas y venteo</span>
+            </div>
+          </button>
+
+          <button class="sim-btn" onclick="activateSimItem('pulmon', this)">
+            <div class="sim-btn-icon">🌿</div>
+            <div>
+              <div>Pulmón Verde (30%)</div>
+              <span style="font-size: 0.72rem; color: var(--gray-600); font-weight: 500;">Flora autóctona riojana</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Tarjeta de detalle interactivo -->
+        <div class="sim-card-detail" id="simDetailCard">
+          <div class="sim-card-badge" id="simBadge" style="background: #fee2e2; color: #b91c1c;">
+            Condición Geológica Crítica
+          </div>
+          <h4 id="simTitle">Restricción Geotécnica (Subsuelo de 2 a 10 metros)</h4>
+          <p id="simText">
+            El perfil estratigráfico revela una masa heterogénea de desechos sólidos de 2 a 10 metros de profundidad. Esta condición descarta por completo estructuras pesadas o edificios habitacionales permanentes debido al alto riesgo de colapso por asentamientos diferenciales y consolidación residual. Se implementará una cimentación flotante mediante plateas de hormigón armado aligerado, micropilotes perimetrales y estructuras modulares desmontables de perfilería metálica liviana.
+          </p>
+          <div class="sim-specs-row" id="simSpecs">
+            <span class="sim-spec-pill"><strong>Carga máx:</strong> &lt; 0.6 kg/cm²</span>
+            <span class="sim-spec-pill"><strong>Tipo estructura:</strong> Modular desmontable</span>
+            <span class="sim-spec-pill"><strong>Seguridad:</strong> Monitoreo de asentamiento trimestral</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÓDULO DESTACADO: Concientización Ambiental y Estrategia 3R -->
+  <section class="awareness-section" id="concientizacion">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow" style="background: #ffffff; border-color: #86efac; color: #166534;">Compromiso Colectivo</span>
+        <h2 class="section-title" style="color: #064e3b;">Llamado a la Concientización Ambiental</h2>
+        <p class="section-description" style="color: #14532d;">
+          Los basurales no son un accidente geográfico; son el resultado de modelos de consumo descartables y falta de corresponsabilidad ciudadana e institucional.
+        </p>
+      </div>
+
+      <!-- Manifiesto -->
+      <div class="awareness-manifesto">
+        <h3>"La Basura No Desaparece al Tirarla"</h3>
+        <p>
+          Cada bolsa de residuos arrojada a un terreno baldío en el barrio Urbano 3 permanece décadas contaminando el agua que bebe nuestra comunidad y el aire que respiran nuestros niños. La verdadera transformación comienza en nuestros hogares con la <strong>Estrategia de las 3R (Reducir, Reutilizar y Reciclar)</strong>.
+        </p>
+      </div>
+
+      <!-- 3R Interactive Cards -->
+      <div class="three-r-grid">
+        <!-- R1: Reducir -->
+        <div class="r-card r-reduce">
+          <div class="r-card-header">
+            <div class="r-badge-number">1R</div>
+            <div class="r-card-title">Reducir</div>
+            <div class="r-card-subtitle">Minimizar en el Origen</div>
+          </div>
+          <div class="r-card-body">
+            <ul class="r-action-list">
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Rechazar plásticos de un solo uso:</strong> Llevar bolsas de tela a supermercados y verdulerías.</span>
+              </li>
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Consumo a granel:</strong> Evitar envases plásticos multicapa y bandejas de poliestireno expandido.</span>
+              </li>
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Planificación de compras:</strong> Disminuir el desperdicio de alimentos que termina fermentando al sol.</span>
+              </li>
+            </ul>
+          </div>
+          <button class="r-expandable-btn" onclick="toggleRDetails('details-reduce', this)">
+            <span>Ver Consejos Prácticos</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="r-extra-details" id="details-reduce">
+            <strong>Plan para La Rioja:</strong> Una familia riojana tipo genera 1.1 kg de basura por habitante/día. Al reducir envases innecesarios, se reduce hasta un 35% el volumen de la bolsa negra antes de sacarla a la calle.
+          </div>
+        </div>
+
+        <!-- R2: Reutilizar -->
+        <div class="r-card r-reuse">
+          <div class="r-card-header">
+            <div class="r-badge-number">2R</div>
+            <div class="r-card-title">Reutilizar</div>
+            <div class="r-card-subtitle">Prolongar la Vida Útil</div>
+          </div>
+          <div class="r-card-body">
+            <ul class="r-action-list">
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Envases de vidrio y hojalata:</strong> Limpiarlos y usarlos para almacenamiento de conservas o granos.</span>
+              </li>
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Reparar antes de desechar:</strong> Prolongar electrodomésticos, prendas textiles y calzados.</span>
+              </li>
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Reutilización de maderas y neumáticos:</strong> Ideales para canteros, macetas o cerramientos ecológicos.</span>
+              </li>
+            </ul>
+          </div>
+          <button class="r-expandable-btn" onclick="toggleRDetails('details-reuse', this)">
+            <span>Ver Consejos Prácticos</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="r-extra-details" id="details-reuse">
+            <strong>Plan para La Rioja:</strong> Los neumáticos arrojados en el barrio Urbano 3 son el principal criadero de mosquitos del dengue tras las lluvias estivales. Reutilizarlos pintados para defensas viales o huertas elimina este vector biológico.
+          </div>
+        </div>
+
+        <!-- R3: Reciclar -->
+        <div class="r-card r-recycle">
+          <div class="r-card-header">
+            <div class="r-badge-number">3R</div>
+            <div class="r-card-title">Reciclar</div>
+            <div class="r-card-subtitle">Separación y Compostaje</div>
+          </div>
+          <div class="r-card-body">
+            <ul class="r-action-list">
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Separación en Secos y Húmedos:</strong> Cartón, papel limpio, latas de aluminio y plásticos secos.</span>
+              </li>
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Compostaje domiciliario:</strong> Yerba, cáscaras de frutas, restos de verduras y poda seca.</span>
+              </li>
+              <li class="r-action-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Apoyo a recuperadores urbanos:</strong> Entregar material reciclable limpio y seco para su revalorización.</span>
+              </li>
+            </ul>
+          </div>
+          <button class="r-expandable-btn" onclick="toggleRDetails('details-recycle', this)">
+            <span>Ver Consejos Prácticos</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="r-extra-details" id="details-recycle">
+            <strong>Plan para La Rioja:</strong> El 50% de la basura domiciliaria es orgánica. El compostaje produce abono fértil para el suelo árido riojano y elimina por completo los olores fétidos y lixiviados en el vertedero.
+          </div>
+        </div>
+      </div>
+
+      <!-- Calculadora Comunitaria Interactiva de Residuos -->
+      <div class="calculator-card">
+        <h3 class="calc-title">Simulador de Impacto Familiar en el B° Urbano 3</h3>
+        <p class="calc-subtitle">
+          Descubre cuántos kilogramos de basura genera tu hogar y cuántos se evitarían arrojar al cielo abierto con compostaje y separación.
+        </p>
+
+        <div class="calc-inputs">
+          <div class="slider-container">
+            <div class="slider-header">
+              <span>Integrantes en el hogar:</span>
+              <span id="householdCountDisplay" style="color: var(--primary); font-size: 1.15rem;">4 personas</span>
+            </div>
+            <input type="range" min="1" max="10" value="4" class="slider-range" id="householdSlider" oninput="updateCalculator()">
+          </div>
+        </div>
+
+        <div class="calc-results-grid">
+          <div class="calc-result-box">
+            <span class="calc-res-num" id="dailyKg">4.4 kg</span>
+            <span class="calc-res-label">Residuos diarios generados</span>
+          </div>
+
+          <div class="calc-result-box">
+            <span class="calc-res-num" id="monthlyKg">132 kg</span>
+            <span class="calc-res-label">Residuos mensuales totales</span>
+          </div>
+
+          <div class="calc-result-box highlight">
+            <span class="calc-res-num" id="compostSavedKg">66 kg</span>
+            <span class="calc-res-label">Ahorro mensual por Compost (50%)</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: center; font-size: 0.85rem; color: #166534; font-weight: 600;">
+          💡 ¡Si 200 familias del B° Urbano 3 compostan, evitamos más de <span id="neighborhoodSavedTons" style="font-weight: 800; font-size: 1rem;">13.2 toneladas</span> de basura al mes en el basural!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Institucional -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="brand-font" style="font-size: 1.35rem; color: #ffffff;">Basurales a Cielo Abierto</h4>
+          <p>
+            Proyecto escolar de investigación e innovación socioambiental para la <strong>Expo 2026</strong>. Enfocado en la remediación del periurbano sur de la Ciudad de La Rioja.
+          </p>
+          <div style="font-size: 0.8rem; color: #64748b;">
+            Desarrollado por 5to Año Agro A • Escuela Agrotécnica • La Rioja, Argentina.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Equipo de Alumnas</h4>
+          <ul class="footer-list">
+            <li>Torralba Victoria Micaela</li>
+            <li>Pereyra Taborda Lucia</li>
+            <li>Aguirre Ferreyra Constanza</li>
+            <li>Rearte Cristal</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Docentes y Materias</h4>
+          <ul class="footer-list">
+            <li><strong>CTS / Espacio Opcional:</strong> Prof. Montoya Joel</li>
+            <li><strong>Tecnología / Economía:</strong> Prof. Antonio Abdala</li>
+            <li><strong>Filosofía:</strong> Prof. Nieto Victor</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Proyecto Escolar Expo 2026. Todos los derechos reservados.
+        </div>
+        <a href="#inicio" class="back-to-top">
+          Volver arriba
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script con Lógica Nativa y Chart.js -->
+  <script>
+    // 1. Control del Menú Móvil
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('mobile-open');
+    });
+
+    // Cerrar menú al hacer click en cualquier link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-open');
+      });
+    });
+
+    // 2. Active Link on Scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset + 120;
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop;
+        const sectionId = section.getAttribute('id');
+        const link = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+        if (link && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // 3. Pestañas de Metodología (Tabs)
+    function switchTab(tabName) {
+      // Remover clase active en botones
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      // Ocultar contenidos
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      // Activar botón y contenido correspondiente
+      const targetBtn = document.getElementById(`tab-btn-${tabName}`);
+      const targetContent = document.getElementById(`tab-${tabName}`);
+      if (targetBtn && targetContent) {
+        targetBtn.classList.add('active');
+        targetContent.classList.add('active');
+      }
+    }
+
+    // 4. Simulador Técnico-Económico Interactivo
+    const simData = {
+      geotecnica: {
+        badge: 'Condición Geológica Crítica',
+        badgeBg: '#fee2e2',
+        badgeColor: '#b91c1c',
+        title: 'Restricción Geotécnica (Subsuelo de 2 a 10 metros)',
+        text: 'El perfil estratigráfico revela una masa heterogénea de desechos sólidos de 2 a 10 metros de profundidad. Esta condición descarta por completo estructuras pesadas o edificios habitacionales permanentes debido al alto riesgo de colapso por asentamientos diferenciales y consolidación residual. Se implementará una cimentación flotante mediante plateas de hormigón armado aligerado, micropilotes perimetrales y estructuras modulares desmontables de perfilería metálica liviana.',
+        specs: [
+          '<strong>Carga máx:</strong> < 0.6 kg/cm²',
+          '<strong>Tipo estructura:</strong> Modular desmontable',
+          '<strong>Seguridad:</strong> Monitoreo de asentamiento trimestral'
+        ]
+      },
+      impuestos: {
+        badge: 'Incentivo Fiscal Estatal',
+        badgeBg: '#ecfdf5',
+        badgeColor: '#047857',
+        title: 'Exención de Impuestos Provinciales por 10 Años',
+        text: 'El Estado Provincial otorga una exención total (100%) sobre el Impuesto a los Ingresos Brutos y el Impuesto Inmobiliario durante la primera década de funcionamiento comercial del predio. Este incentivo fiscal reduce drásticamente el período de repago de la inversión inicial de saneamiento (CAPEX) y asegura que los comerciantes locales puedan operar con costos fijos altamente competitivos.',
+        specs: [
+          '<strong>Plazo:</strong> 10 Años corridos',
+          '<strong>Tributos incluidos:</strong> Ingresos Brutos e Inmobiliario',
+          '<strong>Ahorro estimado:</strong> ~18% anual en estructura de costos'
+        ]
+      },
+      banco: {
+        badge: 'Financiamiento Público',
+        badgeBg: '#e0f2fe',
+        badgeColor: '#0369a1',
+        title: 'Línea de Créditos Blandos • Banco Rioja',
+        text: 'Línea crediticia provincial con tasa de interés subsidiada (Badlar - 12 puntos) con hasta 24 meses de gracia de capital. Diseñada específicamente para cooperativas, emprendimientos riojanos y pequeñas empresas que financien la adquisición de tecnología de desgasificación, pavimentos permeables, pérgolas solares e iluminación LED sustentable.',
+        specs: [
+          '<strong>Gracia:</strong> 24 meses de capital',
+          '<strong>Tasa:</strong> Bonificada por el Gobierno de La Rioja',
+          '<strong>Destino:</strong> Infraestructura verde y equipamiento'
+        ]
+      },
+      suelo: {
+        badge: 'Modelo APP',
+        badgeBg: '#fef3c7',
+        badgeColor: '#b45309',
+        title: 'Concesión del 55% del Suelo Seguro',
+        text: 'A cambio de asumir los costos integrales del saneamiento físico, la remediación biológica y la parquización del 45% restante de libre acceso público, la empresa desarrolladora recibe la concesión por 25 años para el uso y explotación de hasta el 55% del predio estabilizado para locales comerciales, gastronomía y servicios recreativos familiares.',
+        specs: [
+          '<strong>Plazo concesión:</strong> 25 años renovables',
+          '<strong>Destino comercial:</strong> 48% locales rentables + 7% servicios',
+          '<strong>Retorno a la comunidad:</strong> 100% libre acceso a parques'
+        ]
+      },
+      saneamiento: {
+        badge: 'Ingeniería Ambiental',
+        badgeBg: '#f3e8ff',
+        badgeColor: '#7e22ce',
+        title: 'Saneamiento Físico: Geomembranas y Venteo de Gas',
+        text: 'El protocolo de saneamiento incluye: 1) Perfilado y compactación mecánica del terreno. 2) Colocación de una geomembrana de polietileno de alta densidad (HDPE de 2 mm) que sella e impermeabiliza los residuos evitando la fuga de lixiviados y olores. 3) Red de captación y chimeneas de venteo de gas metano con filtros de carbón activado para anular el riesgo de explosión o combustión.',
+        specs: [
+          '<strong>Geomembrana:</strong> HDPE 2.0 mm sellada por termofusión',
+          '<strong>Control Biogás:</strong> Chimeneas de desgasificación pasiva',
+          '<strong>Capa vegetal:</strong> 60 cm de tierra fértil sobre barrera'
+        ]
+      },
+      pulmon: {
+        badge: 'Biodiversidad Autóctona',
+        badgeBg: '#dcfce7',
+        badgeColor: '#15803d',
+        title: 'Pulmón Verde con Flora Autóctona (30% de Superficie)',
+        text: 'El 30% del espacio se destinará exclusivamente a un bosque urbano con especies nativas adaptadas a las condiciones de aridez y bajo requerimiento hídrico de La Rioja (algarrobo blanco y negro, chañar, jarilla, tusca y brea). Este estrato botánico purifica el aire, fija el polvo en suspensión, disminuye la temperatura estival (isla de calor) y devuelve biodiversidad al barrio.',
+        specs: [
+          '<strong>Especies:</strong> Algarrobo, Chañar, Jarilla, Brea',
+          '<strong>Riego:</strong> Por goteo con captación de aguas grises tratadas',
+          '<strong>Superficie:</strong> Hasta 3.000 m² de sombra natural'
+        ]
+      }
+    };
+
+    function activateSimItem(key, btnElement) {
+      // Estilos de botones
+      document.querySelectorAll('.sim-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      const data = simData[key];
+      const card = document.getElementById('simDetailCard');
+      const badge = document.getElementById('simBadge');
+      const title = document.getElementById('simTitle');
+      const text = document.getElementById('simText');
+      const specs = document.getElementById('simSpecs');
+
+      // Animación suave de transición
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(6px)';
+
+      setTimeout(() => {
+        badge.textContent = data.badge;
+        badge.style.background = data.badgeBg;
+        badge.style.color = data.badgeColor;
+
+        title.textContent = data.title;
+        text.innerHTML = data.text;
+
+        specs.innerHTML = data.specs.map(s => `<span class="sim-spec-pill">${s}</span>`).join('');
+
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 150);
+    }
+
+    // 5. Expandibles de las 3R
+    function toggleRDetails(id, btn) {
+      const details = document.getElementById(id);
+      const isOpen = details.classList.contains('open');
+
+      if (isOpen) {
+        details.classList.remove('open');
+        btn.querySelector('span').textContent = 'Ver Consejos Prácticos';
+        btn.querySelector('svg').style.transform = 'rotate(0deg)';
+      } else {
+        details.classList.add('open');
+        btn.querySelector('span').textContent = 'Ocultar Consejos';
+        btn.querySelector('svg').style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // 6. Calculadora Dinámica de Residuos
+    function updateCalculator() {
+      const slider = document.getElementById('householdSlider');
+      const count = parseInt(slider.value, 10);
+
+      document.getElementById('householdCountDisplay').textContent = `${count} ${count === 1 ? 'persona' : 'personas'}`;
+
+      // Cálculos basados en 1.1 kg/persona/día promedio en La Rioja
+      const daily = (count * 1.1).toFixed(1);
+      const monthly = Math.round(daily * 30);
+      const compostSaved = Math.round(monthly * 0.50); // 50% orgánicos
+      const neighborhoodTons = ((200 * (4 * 1.1 * 30 * 0.50)) / 1000).toFixed(1);
+
+      document.getElementById('dailyKg').textContent = `${daily} kg`;
+      document.getElementById('monthlyKg').textContent = `${monthly} kg`;
+      document.getElementById('compostSavedKg').textContent = `${compostSaved} kg`;
+      document.getElementById('neighborhoodSavedTons').textContent = `${neighborhoodTons} toneladas`;
+    }
+
+    // 7. Renderizado del Gráfico de Torta con Chart.js
+    let chartInstance = null;
+    function initDistributionChart() {
+      const ctx = document.getElementById('spaceDistributionChart');
+      if (!ctx) return;
+
+      // Destruir si ya existe
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      chartInstance = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: [
+            'Área Rentable (Comercios)',
+            'Pulmón Verde (Flora Autóctona)',
+            'Circulación y Senderos',
+            'Estacionamiento Ecológico'
+          ],
+          datasets: [{
+            data: [48, 30, 17, 5],
+            backgroundColor: [
+              '#059669', // Emerald green
+              '#10b981', // Mint green
+              '#38bdf8', // Sky blue
+              '#64748b'  // Slate gray
+            ],
+            borderWidth: 3,
+            borderColor: '#ffffff',
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false // Usamos la leyenda HTML enriquecida al costado
+            },
+            tooltip: {
+              backgroundColor: '#0f172a',
+              titleFont: { family: 'Plus Jakarta Sans', size: 14, weight: 'bold' },
+              bodyFont: { family: 'Plus Jakarta Sans', size: 13 },
+              padding: 12,
+              cornerRadius: 8,
+              callbacks: {
+                label: function(context) {
+                  const val = context.raw || 0;
+                  // Si el predio es de 10.000 m² (1 ha)
+                  const m2 = Math.round(val * 100);
+                  return ` Proporción: ${val}% (~${m2} m² en 1 hectárea)`;
+                }
+              }
+            }
+          },
+          cutout: '62%',
+          animation: {
+            animateScale: true,
+            animateRotate: true,
+            duration: 1400
+          }
+        }
+      });
+    }
+
+    // Inicializar al cargar y observar scroll
+    window.addEventListener('DOMContentLoaded', () => {
+      initDistributionChart();
+      updateCalculator();
+    });
+  </script>
+</body>
+</html>

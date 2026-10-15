@@ -1,0 +1,6 @@
+{
+  "name": "Basurales a Cielo Abierto - Expo 2026",
+  "description": "Proyecto interactivo escolar sobre el impacto ambiental y reconversión sustentable en el barrio Urbano 3 de La Rioja.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
